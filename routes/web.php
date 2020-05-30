@@ -24,10 +24,10 @@ Route::get('×××',
 
 Route::group(['prefix' => 'admin'], function() {
     Route::get('profile/create',
-    'Admin\ProfileControlle@add');
+    'Admin\ProfileControlle@add')->middleware('auth');
     
     Route::get('profile/edit',
-    'Admin\ProfileControlle@edit');
+    'Admin\ProfileControlle@edit')->middleware('auth');
 });
 
 Auth::routes();
