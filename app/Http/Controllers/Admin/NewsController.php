@@ -13,5 +13,9 @@ class NewsController extends Controller
         return view('admin.news.create');
     }
     
+    public function create(request $recuest)
+    {
+        return redirect("admin/news/create");
+    }
    
 }
