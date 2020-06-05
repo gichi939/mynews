@@ -41,6 +41,11 @@ Route::group(['prefix' => 'admin', 'middleware'=>'auth'], function() {
     
     Route::get('profile', 
     'Admin\ProfileControlle@index');
+    
+    Route::get('profile/delete', 
+    'Admin\ProfileControlle@delete');
+    
+    
 });
 
 Auth::routes();

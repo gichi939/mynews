@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\profile;
 
+use App\ProfileHistory;
+use carbon\carbon;
+
 class ProfileControlle extends Controller
 {
     
@@ -19,7 +22,7 @@ class ProfileControlle extends Controller
         // Validationを行う
         $this->validate($request, Profile::$rules);
         
-        $profile = new profile;
+        $profile = new Profile;
         $form = $request->all();
         
       //   if ($form['image']) {
@@ -80,7 +83,20 @@ class ProfileControlle extends Controller
 
       // 該当するデータを上書きして保存する
       $profile->fill($profile_form)->save();
-
+      
+        $profilehistory = new ProfileHistory;
+        $profilehistory->profile_id = $profile->id;
+        $profilehistory->profileedited_at = Carbon::now();
+        $profilehistory->save();
+        
       return redirect('admin/profile');
+  }
+  
+   public function delete(Request $request)
+  {
+      $profile = Profile::find($request->id);
+      
+      $profile->delete();
+      return redirect('admin/profile/');
   }
 }
