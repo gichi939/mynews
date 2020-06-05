@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\profile;
 
-use App\ProfileHistory;
+use App\ProfileHistories;
 use carbon\carbon;
 
 class ProfileControlle extends Controller
@@ -25,12 +25,6 @@ class ProfileControlle extends Controller
         $profile = new Profile;
         $form = $request->all();
         
-      //   if ($form['image']) {
-      //   $path = $request->file('image')->store('public/image');
-      //   $profile->image_path = basename($path);
-      // } else {
-      //     $profile->image_path = null;
-      // }
         
         unset($form['_token']);
         
@@ -82,9 +76,9 @@ class ProfileControlle extends Controller
       unset($profile_form['_token']);
 
       // 該当するデータを上書きして保存する
-      $profile->fill($profile_form)->save();
+        $profile->fill($profile_form)->save();
       
-        $profilehistory = new ProfileHistory;
+        $profilehistory = new ProfileHistories;
         $profilehistory->profile_id = $profile->id;
         $profilehistory->profileedited_at = Carbon::now();
         $profilehistory->save();

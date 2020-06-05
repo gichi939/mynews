@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ProfileHistory extends Model
+class ProfileHistories extends Model
 {
     protected $guarded = array('id');
     
