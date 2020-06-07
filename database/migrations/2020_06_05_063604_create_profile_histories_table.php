@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProfileHistoriesTable extends Migration
+class CreateProfile_HistoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -16,7 +16,7 @@ class CreateProfileHistoriesTable extends Migration
         Schema::create('profile_histories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('profile_id');
-            $table->string('profileedited_at');
+            $table->string('edited_at');
             $table->timestamps();
         });
     }
